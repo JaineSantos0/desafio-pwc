@@ -1,10 +1,15 @@
 package com.jainejosiane.services;
 
 import com.jainejosiane.exceptions.FraseVaziaException;
+import com.jainejosiane.exceptions.PalavraVaziaException;
 
 public class VerificaAnagramaDePalindromoService {
 
-    public boolean verificar(String entrada) {
+    public boolean verificar(String entrada) throws PalavraVaziaException {
+
+        if (entrada.isEmpty()){
+            throw new PalavraVaziaException("Palavra vazia");
+        }
 
         StringBuilder palavraInversa = new StringBuilder();
 
