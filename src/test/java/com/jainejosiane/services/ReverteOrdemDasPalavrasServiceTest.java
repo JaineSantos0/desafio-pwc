@@ -9,13 +9,13 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
-public class ReverterOrdemDasPalavrasServiceTest {
+public class ReverteOrdemDasPalavrasServiceTest {
 
-    private ReverteOrdemDasPalavrasService reverte;
+    private ReverteOrdemDasPalavrasService service;
 
     @Before
     public void setup() {
-        reverte = new ReverteOrdemDasPalavrasService();
+        service = new ReverteOrdemDasPalavrasService();
     }
 
     @Test
@@ -26,7 +26,7 @@ public class ReverterOrdemDasPalavrasServiceTest {
         String fraseSaida = "amazing is OpenAI World! Hello,";
 
         //acao
-        String fraseRevertida = reverte.reverter(fraseEntrada);
+        String fraseRevertida = service.reverter(fraseEntrada);
 
         //verificacao
        assertThat(fraseRevertida, is(fraseSaida));
@@ -40,7 +40,7 @@ public class ReverterOrdemDasPalavrasServiceTest {
 
         //acao
         try {
-            reverte.reverter(fraseEntrada);
+            service.reverter(fraseEntrada);
             fail();
         } catch (FraseVaziaException exception) {
             assertThat(exception.getMessage(), is("Frase vazia"));
@@ -55,7 +55,7 @@ public class ReverterOrdemDasPalavrasServiceTest {
 
         //acao
         try {
-            reverte.reverter(fraseEntrada);
+            service.reverter(fraseEntrada);
             Assert.fail();
         } catch (NaoReverteFraseComUmaPalavraException exception) {
             assertThat(exception.getMessage(), is("Não pode converter frase com uma palavra"));
